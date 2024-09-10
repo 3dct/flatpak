@@ -1,0 +1,177 @@
+{
+    "app-id": "at.zfp.openia",
+    "default-branch": "stable",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "6.7",
+    "sdk": "org.kde.Sdk",
+    "command": "open_iA",
+    "modules": [
+        {
+            "name": "vtk",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DVTK_LEGACY_SILENT:BOOL=On",
+                "-DVTK_MODULE_ENABLE_VTK_GUISupportQt:STRING=YES",
+                "-DVTK_MODULE_ENABLE_VTK_GUISupportQtSQL:STRING=NO",
+                "-DVTK_MODULE_ENABLE_VTK_RenderingQt:STRING=YES",
+                "-DVTK_MODULE_ENABLE_VTK_RenderingContextOpenGL2:STRING=YES",
+                "-DVTK_MODULE_ENABLE_VTK_ViewsQt:STRING=YES",
+                "-DVTK_SMP_IMPLEMENTATION_TYPE:STRING=STDThread"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.vtk.org/files/release/9.3/VTK-9.3.1.tar.gz",
+                    "sha512": "5dcd6764b2d9fe476bcc7bd195fab8230b7628579d94656ab037dcaecd07c7d40d0fc4afba446942ca15cd881df17f4c84581047e75a6e11d2e2d339d97c7fa3"
+                }
+            ],
+            "cleanup": [
+                "/bin/vtkEncodeString-9.3",
+                "/bin/vtkHashSource-9.3",
+                "/bin/vtkParseJava-9.3",
+                "/bin/vtkProbeOpenGLVersion-9.3",
+                "/bin/vtkWrapHierarchy-9.3",
+                "/bin/vtkWrapJava-9.3",
+                "/bin/vtkWrapPython-9.3",
+                "/bin/vtkWrapPythonInit-9.3",
+                "/include/vtk-9.3",
+                "/lib/cmake/vtk-9.3",
+                "/lib/debug",
+                "/lib/vtk",
+                "/lib/vtk-9.3",
+                "/share/cmake",
+                "/share/doc/vtk-9.3",
+                "/share/doc",
+                "/share/vtk-9.3"
+            ]
+        },
+        {
+            "name": "itk",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DBUILD_SHARED_LIBS:BOOL=On",
+                "-DBUILD_TESTING:BOOL=Off",
+                "-DBUILD_STATIC_LIBS:BOOL=Off",
+                "-DBUILD_EXAMPLES:BOOL=Off",
+                "-DITK_USE_GPU:BOOL=Off",
+                "-DITK_USE_64BITS_IDS:BOOL=On",
+                "-DModule_ITKReview:BOOL=On",
+                "-DModule_ITKVtkGlue:BOOL=On"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v5.4.0.tar.gz",
+                    "sha512": "3a98ececf258aac545f094dd3e97918c93cc82bc623ddf793c4bf0162ab06c83fbfd4d08130bdec6e617bda85dd17225488bc1394bc91b17f1232126a5d990db"
+                }
+            ],
+            "cleanup": [
+                "/bin/h5c++",
+                "/bin/h5cc",
+                "/bin/h5hlc++",
+                "/bin/h5hlcc",
+                "/bin/itkTestDriver",
+                "/include",
+                "/lib/cmake",
+                "/lib/debug",
+                "/lib/gdcmopenjpeg-*",
+                "/lib/itkLIBMINCConfig.cmake",
+                "/lib/libhdf5.settings",
+                "/lib/pkgconfig",
+                "/lib/UseitkLIBMINC.cmake",
+                "/share/doc",
+                "/share/ITK-5.4"
+            ]
+        },
+        {
+            "name": "eigen",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DEIGEN_BUILD_BLAS:BOOL=OFF",
+                "-DEIGEN_BUILD_LAPACK:BOOL=OFF",
+                "-DEIGEN_BUILD_TESTING:BOOL=OFF",
+                "-DEIGEN_BUILD_DOC:BOOL=OFF",
+                "-DEIGEN_BUILD_DEMOS:BOOL=OFF",
+                "-DEIGEN_BUILD_BTL:BOOL=OFF",
+                "-DEIGEN_BUILD_SPBENCH:BOOL=OFF"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.com/libeigen/eigen.git",
+                    "commit": "c29c800126982c561e8d0b9255dc65474cd98de3"
+                }
+            ],
+            "cleanup": [
+                "/include",
+                "/share/eigen3"
+            ]
+        },
+        {
+            "name": "open_iA",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DModule_4DCT:BOOL=ON",
+                "-DModule_AdaptiveThreshold:BOOL=ON",
+                "-DModule_BoneThickness:BOOL=ON",
+                "-DModule_CommonImageFilters:BOOL=ON",
+                "-DModule_CompVis:BOOL=ON",
+                "-DModule_DynamicVolumeLines:BOOL=ON",
+                "-DModule_FeatureAnalyzer:BOOL=ON",
+                "-DModule_FeatureAnalyzerComputation:BOOL=ON",
+                "-DModule_FeatureCharacteristics:BOOL=ON",
+                "-DModule_FeatureScout:BOOL=ON",
+                "-DModule_FiAKEr:BOOL=ON",
+                "-DModule_FilterPreview:BOOL=ON",
+                "-DModule_FoamCharacterization:BOOL=ON",
+                "-DModule_FuzzyFeatureTracking:BOOL=ON",
+                "-DModule_GEMSe:BOOL=ON",
+                "-DModule_InSpectr:BOOL=ON",
+                "-DModule_Labelling:BOOL=ON",
+                "-DModule_MetaFilters:BOOL=ON",
+                "-DModule_Metrics:BOOL=ON",
+                "-DModule_NModalTF:BOOL=ON",
+                "-DModule_Remote:BOOL=ON",
+                "-DModule_Segmentation:BOOL=ON",
+                "-DModule_Surfaces:BOOL=ON",
+                "-DModule_TripleHistogramTF:BOOL=ON",
+                "-DModule_Uncertainty:BOOL=ON",
+                "-DModule_VolumePlayer:BOOL=ON",
+                "-DopeniA_CUDA_ENABLED:BOOL=OFF",
+                "-DFLATPAK_BUILD:BOOL=On"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "tag": "2024.9.2",
+                    "url": "https://github.com/3dct/open_iA.git",
+                    "disable-shallow-clone": true
+                }
+            ],
+            "cleanup": [
+                "/lib/cmake",
+                "/lib/debug"
+            ]
+        }
+    ],
+    "finish-args": [
+        "--device=dri",
+        "--filesystem=host",
+        "--share=ipc",
+        "--share=network",
+        "--socket=wayland",
+        "--socket=fallback-x11",
+        "--filesystem=xdg-run/dconf",
+        "--filesystem=~/.config/dconf:ro",
+        "--talk-name=ca.desrt.dconf",
+        "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+    ]
+}
