@@ -2,7 +2,7 @@
     "app-id": "at.zfp.openia",
     "default-branch": "stable",
     "runtime": "org.kde.Platform",
-    "runtime-version": "6.7",
+    "runtime-version": "6.8",
     "sdk": "org.kde.Sdk",
     "command": "open_iA",
     "modules": [
@@ -12,6 +12,7 @@
             "builddir": true,
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DCMAKE_INSTALL_LIBDIR=lib",
                 "-DVTK_LEGACY_SILENT:BOOL=On",
                 "-DVTK_MODULE_ENABLE_VTK_GUISupportQt:STRING=YES",
                 "-DVTK_MODULE_ENABLE_VTK_GUISupportQtSQL:STRING=NO",
@@ -23,28 +24,30 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://www.vtk.org/files/release/9.3/VTK-9.3.1.tar.gz",
-                    "sha512": "5dcd6764b2d9fe476bcc7bd195fab8230b7628579d94656ab037dcaecd07c7d40d0fc4afba446942ca15cd881df17f4c84581047e75a6e11d2e2d339d97c7fa3"
+                    "url": "https://www.vtk.org/files/release/9.4/VTK-9.4.2.tar.gz",
+                    "sha512": "740919c9b63ad91c5ae45b90b502585a78e9f08b32f06308c475d874decc1e99e813c49c67d37586886ad4860e61630cd51569747003dcf88b3fb744c481f515"
                 }
             ],
             "cleanup": [
-                "/bin/vtkEncodeString-9.3",
-                "/bin/vtkHashSource-9.3",
-                "/bin/vtkParseJava-9.3",
-                "/bin/vtkProbeOpenGLVersion-9.3",
-                "/bin/vtkWrapHierarchy-9.3",
-                "/bin/vtkWrapJava-9.3",
-                "/bin/vtkWrapPython-9.3",
-                "/bin/vtkWrapPythonInit-9.3",
-                "/include/vtk-9.3",
-                "/lib/cmake/vtk-9.3",
+                "/bin/vtkEncodeString-9.4",
+                "/bin/vtkHashSource-9.4",
+                "/bin/vtkParseJava-9.4",
+                "/bin/vtkProbeOpenGLVersion-9.4",
+                "/bin/vtkWrapHierarchy-9.4",
+                "/bin/vtkWrapJava-9.4",
+                "/bin/vtkWrapPython-9.4",
+                "/bin/vtkWrapPythonInit-9.4",
+                "/bin/vtkWrapSerDes-9.4",
+                "/include/vtk-9.4",
+                "/lib/cmake/vtk-9.4",
                 "/lib/debug",
                 "/lib/vtk",
-                "/lib/vtk-9.3",
+                "/lib/vtk-9.4",
                 "/share/cmake",
-                "/share/doc/vtk-9.3",
+                "/share/doc/vtk-9.4",
                 "/share/doc",
-                "/share/vtk-9.3"
+                "/share/licenses",
+                "/share/vtk-9.4"
             ]
         },
         {
@@ -65,8 +68,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v5.4.0.tar.gz",
-                    "sha512": "3a98ececf258aac545f094dd3e97918c93cc82bc623ddf793c4bf0162ab06c83fbfd4d08130bdec6e617bda85dd17225488bc1394bc91b17f1232126a5d990db"
+                    "url": "https://github.com/InsightSoftwareConsortium/ITK/releases/download/v5.4.3/InsightToolkit-5.4.3.tar.gz",
+                    "sha512": "39e9003cc76a08f486c28e47df4b66944d1ba1e7917ad986ace84422acf2abc6956956929bebb08f37b04a9905f251eb941443a3d873c40852130aa1c189cf4b"
                 }
             ],
             "cleanup": [
@@ -105,12 +108,13 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.com/libeigen/eigen.git",
-                    "commit": "c29c800126982c561e8d0b9255dc65474cd98de3"
+                    "commit": "d791d48859c6fc7850c9fd5270d2b236c818068d"
                 }
             ],
             "cleanup": [
                 "/include",
-                "/share/eigen3"
+                "/share/eigen3",
+                "/share/pkgconfig/eigen3.pc"
             ]
         },
         {
@@ -151,7 +155,7 @@
             "sources": [
                 {
                     "type": "git",
-                    "tag": "2024.9.2",
+                    "tag": "2025.4",
                     "url": "https://github.com/3dct/open_iA.git",
                     "disable-shallow-clone": true
                 }
